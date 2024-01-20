@@ -3,7 +3,7 @@
 
 #include "bus.h"
 
-struct cpu
+typedef struct CPU
 {
    using Byte = unsigned char;
    using Word = unsigned short;
@@ -18,8 +18,11 @@ struct cpu
    Byte C : 1; // carry flag 
    Byte H : 1; // aux carry
    struct BUS bus;
-};
+}CPU;
 
-
+void init(struct CPU * cpu);
+unsigned int fetch(struct CPU * cpu);
+int execute(struct CPU * cpu, unsigned int inst);
+void dump_registers(struct CPU *cpu);
 
 #endif

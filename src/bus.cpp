@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "../includes/bus.h"
 
 unsigned int bus_load(BUS* bus, unsigned int addr, unsigned int size){

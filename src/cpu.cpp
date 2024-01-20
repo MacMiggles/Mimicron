@@ -1,33 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct cpu
-{
-   using Byte = unsigned char;
-   using Word = unsigned short;
+#include "../includes/dram.h"
+#include "../includes/opcodes.h"
+#include "../includes/cpu.h"
 
-   Word PC, SP;
-   Byte A, B, C, D, E, H, L;
-   // register. A is accumulator, rest is "scatchpad" 
-
-   Byte S : 1; // sign flag
-   Byte Z : 1; // zero flag 
-   Byte P : 1; // parity flag 
-   Byte C : 1; // carry flag 
-   Byte H : 1; // aux carry
-   
-   // https://de.wikipedia.org/wiki/Intel_8080#/media/Datei:Intel_8080_arch.svg
-
-   void Reset(){
-      PC = 0x0000;
-      SP = 0x0010;
-   }
-};
+void cpu_init(CPU  *cpu){
+   // set registers
+   cpu->PC  = DRAM_BASE;
+}
 
 
+unsigned int cpu_fetch(struct CPU * cpu){
+   return bus_load(&(cpu->bus), cpu->PC, 8);
+}
 
-
-
-int main(){
+int cpu_execute(struct CPU * cpu, unsigned int inst){
    return 0;
+}
+
+void cpu_dump_registers(struct CPU *cpu){
+
 }

@@ -8,6 +8,7 @@ typedef struct CPU
    using Byte = unsigned char;
    using Word = unsigned short;
 
+   Word PC, SP;
    Byte A, B, C, D, E, H, L;
    Word PC, SP; //16bit
    // register. A is accumulator, rest is "scatchpad" 
@@ -28,10 +29,10 @@ typedef struct CPU
    struct BUS bus;
 }CPU;
 
-void cpu_init(struct CPU * cpu);
+void init(struct CPU * cpu);
 void cpu_step(struct CPU * cpu);
-unsigned int cpu_fetch(struct CPU * cpu);
-int cpu_execute(struct CPU * cpu, unsigned int inst);
-void cpu_dump_registers(struct CPU *cpu);
+unsigned int fetch(struct CPU * cpu);
+int execute(struct CPU * cpu, unsigned int inst);
+void dump_registers(struct CPU *cpu);
 
 #endif
